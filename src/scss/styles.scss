@@ -16,25 +16,16 @@
     max-width: 1200px;
     margin: auto;
     background: white;
-    display: grid;
-    grid-template-columns: 20% 1fr;
-    grid-template-rows: 110px 1fr;
-
-    grid-template-areas:
-        "header header"
-        "dashboard contenido";
-
-    // position: relative;
 
     @include media(sm) {
         width: 100%;
+
         grid-template-columns: 1fr;
         display: flex;
         flex-direction: column;
     }
 
     .header {
-        grid-area: header;
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -48,24 +39,22 @@
                 color: $red;
                 h1 {
                     color: $red;
-                    @include media(sm){
-                        
+                    @include media(sm) {
                         font-size: 20px;
                     }
                 }
                 span {
                     color: #000;
                 }
-                
             }
             i {
                 display: none;
                 @include media(sm) {
                     display: block;
+                    font-size: 20px;
                 }
             }
             @include media(sm) {
-
                 display: flex;
                 justify-content: space-between;
                 align-content: center;
@@ -76,10 +65,18 @@
         }
         .bredcrumb {
             font-size: $perfil_size;
+            @include media(sm) {
+                display: none;
+            }
         }
         .perfil {
             display: flex;
             align-items: center;
+            @include media(sm) {
+                width: 100%;
+                justify-content: space-around;
+                margin-bottom: 1rem;
+            }
             h1 {
                 font-size: $perfil_size;
                 margin: 0 15px;
@@ -100,105 +97,116 @@
             }
         }
     }
-    .dash {
-        grid-area: dashboard;
-        font-size: 18px;
-        display: flex;
-        flex-direction: column;
-        transition: 0.3s ease all;
+    .container-main {
+        display: grid;
+        grid-template-columns: 20% 1fr;
         @include media(sm) {
-            position: absolute;
-            width: 100vh;
-            z-index: 1000;
-            width: 70%;
-            background: #ccc;
-            transform: translate(-200%);
-        }
-        &.active{
-            transform: translate(-0%);
-
-        }
-        .item {
-            margin: 20px 40px;
-            width: 80%;
-            transition: 0.3s ease all;
-            i {
-                margin-right: 17px;
-            }
-            &:hover {
-                cursor: pointer;
-                color: $red;
-
-                background: rgba(255, 30, 30, 0.2);
-                border-radius: 20px;
-            }
-        }
-    }
-    .contenido {
-        grid-area: contenido;
-        width: 80%;
-        @include media(sm) {
+            display: flex;
+            flex-direction: column;
             width: 100%;
-            position: relative;
-            
         }
-        .dias {
-            background-color: rgba(255, 30, 30, 0.1);
-            display: grid;
-            padding: 15px;
-            grid-template-columns: repeat(9, 1fr);
-            justify-items: center;
+
+        .dash {
+            font-size: 18px;
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s ease all;
             @include media(sm) {
-                width: 100%;
-                overflow: auto;
+                position: absolute;
+                height: 100vh;
+                z-index: 1000;
+                width: 80%;
+                opacity: 0.9;
+                background: $blue;
+                transform: translate(-200%);
             }
-            .day {
-                &.active {
-                    background: $red_strong;
+            &.active {
+                transform: translate(-0%);
+            }
+            .item {
+                margin: 20px 40px;
+                width: 80%;
+                transition: 0.3s ease all;
+                @include media(sm) {
                     color: white;
-                    border-radius: 30px;
-                    cursor: pointer;
+                }
+                i {
+                    margin-right: 17px;
                 }
                 &:hover {
-                    background: $red_strong;
-                    color: white;
-                    border-radius: 30px;
                     cursor: pointer;
-                }
-                .dayname {
-                    padding: 15px;
-                }
-                .date {
-                    padding: 15px;
-                    text-align: center;
-                }
-            }
-        }
-        .tarjetas {
-            margin: 20px 0;
-            display: grid;
-            gap: 15px;
-            grid-template-columns: repeat(3, 1fr);
+                    color: $red;
 
-            @include media(sm) {
-                grid-template-columns: repeat(2, 1fr);
+                    background: rgba(255, 30, 30, 0.2);
+                    border-radius: 20px;
+                }
             }
         }
-        .quiz {
-            padding: 20px;
-            .title {
-                display: flex;
-                justify-content: space-between;
-                margin: 20px 0px;
-                font-size: 20px;
-                font-weight: bold;
+        .contenido {
+            width: 80%;
+            @include media(sm) {
+                width: 100%;
+                position: relative;
             }
-            .content {
-                display: flex;
-                flex-direction: row;
+            .dias {
+                background-color: rgba(255, 30, 30, 0.1);
+                display: grid;
+                padding: 15px;
+                grid-template-columns: repeat(9, 1fr);
+                justify-items: center;
+                @include media(sm) {
+                    width: 100%;
+                    overflow: auto;
+                }
+                .day {
+                    &.active {
+                        background: $red_strong;
+                        color: white;
+                        border-radius: 30px;
+                        cursor: pointer;
+                    }
+                    &:hover {
+                        background: $red_strong;
+                        color: white;
+                        border-radius: 30px;
+                        cursor: pointer;
+                    }
+                    .dayname {
+                        padding: 15px;
+                    }
+                    .date {
+                        padding: 15px;
+                        text-align: center;
+                    }
+                }
+            }
+            .tarjetas {
+                margin: 20px 0;
+                display: grid;
+                gap: 15px;
+                grid-template-columns: repeat(3, 1fr);
 
                 @include media(sm) {
-                    flex-direction: column;
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+            .quiz {
+                
+                .title {
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 20px 0px;
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+                .content {
+                    display: flex;
+                    flex-direction: row;
+
+                    @include media(sm) {
+                        flex-direction: column;
+                        font-size: 1rem;
+                    }
                 }
             }
         }

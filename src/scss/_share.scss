@@ -8,6 +8,7 @@
     flex-direction: column;
     @include media(sm) {
         height: auto;
+        font-size: 10px;
     }
     &.purple {
         background: $purple;
