@@ -1,4 +1,4 @@
-
+@import "_media";
 .tarjeta {
     border-radius: 10px;
     color: white;
@@ -6,6 +6,9 @@
     display: flex;
     height: 150px;
     flex-direction: column;
+    @include media(sm) {
+        height: auto;
+    }
     &.purple {
         background: $purple;
     }

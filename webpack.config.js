@@ -5,7 +5,7 @@ module.exports = {
     entry: './src/ts/app.ts',
     devtool: 'inline-source-map',
     devServer: {
-        port: 5500
+        port: 5000
     },
     module: {
         rules: [

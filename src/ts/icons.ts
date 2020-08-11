@@ -7,3 +7,4 @@ export const DASHBOARD= '<i class="fas fa-chart-line"></i>';
 export const ANGLE_DOWN= '<i class="fas fa-angle-down"></i>';
 export const CHECK= '<i class="far fa-check-square"></i>';
 export const COURSE= '<i class="fas fa-book"></i>';
+export const MENU_BARS= '<i class="fas fa-bars"></i>';

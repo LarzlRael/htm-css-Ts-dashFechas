@@ -2,11 +2,16 @@ import "../scss/styles.scss";
 import { cards, items, sumatoria } from "./list-items";
 import { dayName, dates } from './helpers';
 import { MANAGEMENT } from "./icons";
-import $ from 'jquery';
+
 //?Here go you ts code
 //* import '../static/image.jpg';
 //* import 'image.jpg';
 const dash = document.getElementById('dashboard');
+const menu_drawer_active = document.getElementById('menu-drawer-active');
+menu_drawer_active.addEventListener('click', () => {
+    document.querySelector('#dashboard').classList.toggle('active');
+})
+
 
 items.forEach(item => {
     const div = document.createElement('div');
@@ -73,4 +78,5 @@ div.innerHTML = `
         <div class="line"></div>`;
 
 tarjetas.appendChild(div);
+
 

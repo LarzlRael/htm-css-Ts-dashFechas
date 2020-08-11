@@ -1,7 +1,7 @@
 @import "_variables";
 @import "_share";
-@import "_media";
 @import "_circular";
+@import "_media";
 * {
     padding: 0;
     margin: 0;
@@ -13,24 +13,65 @@
 }
 .container {
     width: 90%;
+    max-width: 1200px;
     margin: auto;
     background: white;
     display: grid;
     grid-template-columns: 20% 1fr;
     grid-template-rows: 110px 1fr;
+
     grid-template-areas:
         "header header"
         "dashboard contenido";
+
+    // position: relative;
+
+    @include media(sm) {
+        width: 100%;
+        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+    }
+
     .header {
         grid-area: header;
         display: flex;
         justify-content: space-around;
         align-items: center;
+        @include media(sm) {
+            flex-direction: column;
+        }
+
         .logo {
-            text-transform: uppercase;
-            color: $red;
-            span {
-                color: #000;
+            .logo-title {
+                text-transform: uppercase;
+                color: $red;
+                h1 {
+                    color: $red;
+                    @include media(sm){
+                        
+                        font-size: 20px;
+                    }
+                }
+                span {
+                    color: #000;
+                }
+                
+            }
+            i {
+                display: none;
+                @include media(sm) {
+                    display: block;
+                }
+            }
+            @include media(sm) {
+
+                display: flex;
+                justify-content: space-between;
+                align-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 1rem;
             }
         }
         .bredcrumb {
@@ -62,13 +103,25 @@
     .dash {
         grid-area: dashboard;
         font-size: 18px;
-
         display: flex;
         flex-direction: column;
+        transition: 0.3s ease all;
+        @include media(sm) {
+            position: absolute;
+            width: 100vh;
+            z-index: 1000;
+            width: 70%;
+            background: #ccc;
+            transform: translate(-200%);
+        }
+        &.active{
+            transform: translate(-0%);
 
+        }
         .item {
             margin: 20px 40px;
             width: 80%;
+            transition: 0.3s ease all;
             i {
                 margin-right: 17px;
             }
@@ -84,15 +137,27 @@
     .contenido {
         grid-area: contenido;
         width: 80%;
+        @include media(sm) {
+            width: 100%;
+            position: relative;
+            
+        }
         .dias {
             background-color: rgba(255, 30, 30, 0.1);
             display: grid;
             padding: 15px;
             grid-template-columns: repeat(9, 1fr);
             justify-items: center;
+            @include media(sm) {
+                width: 100%;
+                overflow: auto;
+            }
             .day {
                 &.active {
-                    color: $red;
+                    background: $red_strong;
+                    color: white;
+                    border-radius: 30px;
+                    cursor: pointer;
                 }
                 &:hover {
                     background: $red_strong;
@@ -112,8 +177,12 @@
         .tarjetas {
             margin: 20px 0;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
+            grid-template-columns: repeat(3, 1fr);
+
+            @include media(sm) {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         .quiz {
             padding: 20px;
@@ -126,6 +195,11 @@
             }
             .content {
                 display: flex;
+                flex-direction: row;
+
+                @include media(sm) {
+                    flex-direction: column;
+                }
             }
         }
     }
